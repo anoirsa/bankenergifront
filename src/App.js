@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import Sidebar from './components/sidebar/Sidebar';
+import Topbar from './components/topbar/Topbar';
+import {Switch, Route} from 'react-router-dom';
+import HomePage from './components/pages/home/HomePage';
+import Announcements from './components/pages/announcements/Announcements';
+import BankEnergi from './components/pages/bankenergi/BankEnergi';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Topbar />
+      <div className="container">
+        <Sidebar />
+        <div className="others">
+          <div className="others-wrapper">
+              <Switch>
+                <Route path="/" component={HomePage} exact />
+                <Route path="/announcements" component={Announcements} exact />
+                <Route path="/bankenergi" component={BankEnergi} exact />
+              </Switch>
+          </div>
+        </div>
+       </div>
     </div>
   );
 }
